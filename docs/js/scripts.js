@@ -30,12 +30,13 @@ var setStuff = {};
 var doStuff = function(data) {
 
   console.log(data.items);
-  console.log(data.items[0].link); 
-  console.log(data.items[0].name); 
-  console.log(data.items[0].thumbnails.cropped); 
+//  console.log(data.items[1].link); 
+//  console.log(data.items[1].name); 
+//  console.log(data.items[1].thumbnails.large);
+//  console.log(data.items[1].preview); 
   
   // What do you want to do? Show (display on page) data? 
-    //  showStuff(data);
+      showStuff(data);
   
 };
               
@@ -44,4 +45,27 @@ var doStuff = function(data) {
 
 $.getJSON(getStuff, setStuff, doStuff);
 
+// Display stuff
+
+var showStuff = function(data) {
+  
+  //Put on page
+    $('h1').text(data.name);
+    $('p a').attr('href', data.url);
+  
+  // Child Objects. May have many children. 
+  // Loop or cycle through all the data
+  // Display data at each loop
+    
+    $.each(data.items, function(i){
+        
+        // loop
+        var stuff = '<p>' + data.items[0].name + '</p>';
+        
+        // put onto the page
+        $('#items').append(stuff);
+        
+    });
+    
+};
 
